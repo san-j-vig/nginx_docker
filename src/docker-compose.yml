@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+    nginx_docker:
+        image: nginx_docker
+        container_name: nginx_docker
+        hostname: nginx_docker
+        volumes:
+            - nginx_docker_logs:/var/log/nginx
+        ports:
+            - 80:80
+        networks:
+            - nginx_docker_network
+        security_opt:
+            - no-new-privileges
+        deploy:
+            resources:
+                limits:
+                    cpus: '1'
+                    memory: 512M
+
+volumes:
+    nginx_docker_logs:
+
+
+networks:
+    nginx_docker_network:
